@@ -21,7 +21,7 @@ identityProviders:
       headers:
       - Remote-User
 ```
-> yum install -y krb5-workstation
+> yum install -y krb5-workstation  #安装 kerberos client
 ```
 **vim /etc/krb5.conf**
 [realms]
