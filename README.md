@@ -8,6 +8,7 @@ To start, run like this:
 ```
 docker run -p 80:80 -p 443:443 -p 88:88 -h auth.example.com -e BACKEND=https://api.example.com:8443 -ti liggitt/auth-proxy
 ```
+> docker run -p 80:80 -p 443:443 -p 88:88 -h mydomain.com -e BACKEND=https://qe-scheng39-master-1.0319-jij.qe.rhcloud.com:8443 --privileged -u root -d liggitt/auth-proxy
 
 Invocation details:
 * 80 is the http proxy port
