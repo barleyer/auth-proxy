@@ -10,6 +10,13 @@ docker run -p 80:80 -p 443:443 -p 88:88 -h auth.example.com -e BACKEND=https://a
 ```
 > docker run -p 80:80 -p 443:443 -p 88:88 -h mydomain.com -e BACKEND=https://qe-scheng39-master-1.0319-jij.qe.rhcloud.com:8443 --privileged -u root -d liggitt/auth-proxy
 
+```
+使用--privileged，container内的root拥有真正的root权限。
+否则，container内的root只是外部的一个普通用户权限。
+privileged启动的容器，可以看到很多host上的设备，并且可以执行mount。
+甚至允许你在docker容器中启动docker容器。
+```
+
 Invocation details:
 * 80 is the http proxy port
 * 443 is the https proxy port
