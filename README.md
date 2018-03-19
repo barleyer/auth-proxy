@@ -35,7 +35,10 @@ MYDOMAIN.COM = {
 .mydomain.com = MYDOMAIN.COM
 mydomain.com = MYDOMAIN.COM
 ```
-> docker inspect 8ba193a40560 |grep -i ipaddre       echo 172.17.0.2 mydomain.com >> /etc/hosts 
+```
+docker inspect 8ba193a40560 |grep -i ipaddre       
+echo 172.17.0.2 mydomain.com >> /etc/hosts 
+```
 > kinit user1@MYDOMAIN.COM
 password for user1@MYDOMAIN.COM: password
 <br>  klist <br/>
