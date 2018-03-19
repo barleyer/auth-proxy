@@ -36,6 +36,7 @@ MYDOMAIN.COM = {
 mydomain.com = MYDOMAIN.COM
 ```
 > kinit user1@MYDOMAIN.COM
+password for user1@MYDOMAIN.COM: password
 <br>  klist <br/>
 > kdestroy
 
