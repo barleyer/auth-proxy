@@ -1,3 +1,40 @@
+# Mine
+> docker run -p 80:80 -p 443:443 -p 88:88 -h mydomain.com -e BACKEND=https://qe-scheng39-master-1.0319-jij.qe.rhcloud.com:8443 --privileged -u root -d liggitt/auth-proxy
+
+```
+使用--privileged，container内的root拥有真正的root权限。
+否则，container内的root只是外部的一个普通用户权限。
+privileged启动的容器，可以看到很多host上的设备，并且可以执行mount。
+甚至允许你在docker容器中启动docker容器。
+```
+```
+**vim /etc/origin/master/master-config.yaml**
+identityProviders:
+  - challenge: true
+    login: true
+    name: header
+    provider:
+      apiVersion: v1
+      challengeURL: "http://mydomain.com/mod_auth_gssapi_basic/oauth/authorize?${query}"
+      loginURL:     "http://mydomain.com/mod_auth_gssapi/oauth/authorize?${query}"
+      kind: RequestHeaderIdentityProvider
+      headers:
+      - Remote-User
+```
+> yum install -y krb5-workstation
+```
+**vim /etc/krb5.conf**
+[realms]
+MYDOMAIN.COM = {
+  kdc = mydomain.com
+  admin_server = mydomain.com
+  default_domain = mydomain.com
+}
+ 
+[domain_realm]
+.mydomain.com = MYDOMAIN.COM
+mydomain.com = MYDOMAIN.COM
+```
 # Auth Proxy
 
 ## Overview
@@ -7,14 +44,6 @@ This repo and Docker image provides a test proxy server, configured with Kerbero
 To start, run like this:
 ```
 docker run -p 80:80 -p 443:443 -p 88:88 -h auth.example.com -e BACKEND=https://api.example.com:8443 -ti liggitt/auth-proxy
-```
-> docker run -p 80:80 -p 443:443 -p 88:88 -h mydomain.com -e BACKEND=https://qe-scheng39-master-1.0319-jij.qe.rhcloud.com:8443 --privileged -u root -d liggitt/auth-proxy
-
-```
-使用--privileged，container内的root拥有真正的root权限。
-否则，container内的root只是外部的一个普通用户权限。
-privileged启动的容器，可以看到很多host上的设备，并且可以执行mount。
-甚至允许你在docker容器中启动docker容器。
 ```
 
 Invocation details:
