@@ -36,7 +36,7 @@ MYDOMAIN.COM = {
 mydomain.com = MYDOMAIN.COM
 ```
 > kinit user1@MYDOMAIN.COM
-<br> > klist <br/>
+<br>  klist <br/>
 > kdestroy
 
 # Auth Proxy
