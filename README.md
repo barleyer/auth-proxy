@@ -1,3 +1,4 @@
+[Kerberos 基本安装与配置](http://blog.csdn.net/post_yuan/article/details/54406148)
 # Mine
 > docker run -p 80:80 -p 443:443 -p 88:88 -h mydomain.com -e BACKEND=https://qe-scheng39-master-1.0319-jij.qe.rhcloud.com:8443 --privileged -u root -d liggitt/auth-proxy
 
