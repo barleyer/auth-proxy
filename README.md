@@ -24,7 +24,7 @@ identityProviders:
       headers:
       - Remote-User
 ```
-> yum install -y krb5-workstation  #安装 kerberos client
+> yum install -y krb5-workstation  #安装 kerberos client & both on your laptop and master
 ```
 **vim /etc/krb5.conf**
 [realms]
@@ -42,7 +42,7 @@ mydomain.com = MYDOMAIN.COM
 docker inspect 8ba193a40560 |grep -i ipaddre       
 echo 172.17.0.2 mydomain.com >> /etc/hosts 
 ```
-> kinit user1@MYDOMAIN.COM
+> kinit user1@MYDOMAIN.COM <br><br/>
 password for user1@MYDOMAIN.COM: password
 <br>  klist <br/>
 > kdestroy
