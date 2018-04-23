@@ -1,8 +1,8 @@
 [Kerberos 基本安装与配置](http://blog.csdn.net/post_yuan/article/details/54406148)
 # Mine
-> docker run -p 80:80 -p 443:443 -p 88:88 -h mydomain.com -e BACKEND=https://qe-scheng39-master-1.0319-jij.qe.rhcloud.com:8443 --privileged -u root -d liggitt/auth-proxy
+> docker run -p 80:80 -p 443:443 -p 88:88 -h mydomain.com -e BACKEND=$MASTER:8443 --privileged -u root -d liggitt/auth-proxy
 <br><br/>
-> docker run --privileged -p 80:80 -p 443:443 -p 88:88 -h mydomain.com -e BACKEND=https://host-8-241-55.host.centralci.eng.rdu2.redhat.com:8443 -ti wjiang/auth-proxy:latest
+> docker run --privileged -p 80:80 -p 443:443 -p 88:88 -h mydomain.com -e BACKEND=$MASTER:8443 -ti wjiang/auth-proxy:latest
 
 ```
 使用--privileged，container内的root拥有真正的root权限。
@@ -24,7 +24,7 @@ identityProviders:
     headers:
     - Remote-User
 ```
-> yum install -y krb5-workstation  #安装 kerberos client & both on your laptop and master
+> yum install -y krb5-workstation  # Both on your laptop and master 安装 kerberos client
 ```
 **vim /etc/krb5.conf**
 [realms]
@@ -40,7 +40,7 @@ mydomain.com = MYDOMAIN.COM
 ```
 ```
 docker inspect 8ba193a40560 |grep -i ipaddre       
-echo 172.17.0.2 mydomain.com >> /etc/hosts 
+echo 172.17.0.2 mydomain.com >> /etc/hosts # laptop：用 ping 的 instance ip && Master：上用 上一步打印的 ip
 ```
 > kinit user1@MYDOMAIN.COM &nbsp;-->&nbsp; password for user1@MYDOMAIN.COM: password
 <br>  klist <br/>
