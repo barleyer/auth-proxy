@@ -12,17 +12,17 @@ privileged启动的容器，可以看到很多host上的设备，并且可以执
 ```
 ```
 **vim /etc/origin/master/master-config.yaml**
-identityProviders:
-- challenge: true
-  login: true
-  name: header
-  provider:
-    apiVersion: v1
-    challengeURL: "http://mydomain.com/mod_auth_gssapi_basic/oauth/authorize?${query}"
-    loginURL:     "http://mydomain.com/mod_auth_gssapi/oauth/authorize?${query}"
-    kind: RequestHeaderIdentityProvider
-    headers:
-    - Remote-User
+  identityProviders:
+  - challenge: true
+    login: true
+    name: header
+    provider:
+      apiVersion: v1
+      challengeURL: "http://mydomain.com/mod_auth_gssapi_basic/oauth/authorize?${query}"
+      loginURL:     "http://mydomain.com/mod_auth_gssapi/oauth/authorize?${query}"
+      kind: RequestHeaderIdentityProvider
+      headers:
+      - Remote-User
 ```
 > yum install -y krb5-workstation  # Both on your laptop and master 安装 kerberos client
 ```
