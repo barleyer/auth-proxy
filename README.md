@@ -39,7 +39,7 @@ MYDOMAIN.COM = {
 mydomain.com = MYDOMAIN.COM
 ```
 ```
-docker inspect 8ba193a40560 |grep -i ipaddre       
+docker inspect 8ba193a40560 |grep -i ipaddress      
 echo 172.17.0.2 mydomain.com >> /etc/hosts # laptop：用 ping 的 instance ip && Master：上用 上一步打印的 ip
 ```
 > kinit user1@MYDOMAIN.COM &nbsp;-->&nbsp; password for user1@MYDOMAIN.COM: password
